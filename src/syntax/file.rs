@@ -14,16 +14,12 @@
  *    limitations under the License.
  */
 
-pub mod attr;
-pub mod block;
-pub mod decl;
-pub mod exp;
-pub mod id;
-pub mod if_branch;
-pub mod lit;
-pub mod loc;
-pub mod pat;
-pub mod path;
-pub mod stmt;
-pub mod typ;
-pub mod file;
+use crate::syntax::decl::Decl;
+use crate::syntax::path::QualifiedPath;
+
+#[derive(Debug)]
+pub struct PlankFile {
+    pub content: Vec<Decl>,
+    pub path: QualifiedPath,
+    pub text: String,
+}
