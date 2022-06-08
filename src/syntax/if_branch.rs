@@ -1,5 +1,5 @@
 /*
- *    Copyright 2021 Gabrielle Guimarães de Oliveira
+ *    Copyright 2022 Gabrielle Guimarães de Oliveira
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,8 +14,21 @@
  *    limitations under the License.
  */
 
-pub mod syntax;
+use crate::syntax::block::Block;
+use crate::syntax::exp::Exp;
+use crate::syntax::loc::Loc;
 
-fn main() {
-    println!("Hello, world!");
+#[derive(Debug)]
+pub enum IfBranch {
+    Then(Exp, Loc),
+    Block(Block),
+}
+
+impl IfBranch {
+    pub fn loc(&self) -> &Loc {
+        match self {
+            IfBranch::Then(_, loc) => loc,
+            IfBranch::Block(block) => block.loc(),
+        }
+    }
 }

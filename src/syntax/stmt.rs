@@ -1,5 +1,5 @@
 /*
- *    Copyright 2021 Gabrielle Guimarães de Oliveira
+ *    Copyright 2022 Gabrielle Guimarães de Oliveira
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,8 +14,23 @@
  *    limitations under the License.
  */
 
-pub mod syntax;
+use crate::syntax::decl::Decl;
+use crate::syntax::exp::Exp;
+use crate::syntax::loc::Loc;
 
-fn main() {
-    println!("Hello, world!");
+#[derive(Debug)]
+pub enum Stmt {
+    Decl(Decl),
+    Exp(Exp, Loc),
+    Return(Option<Exp>, Loc),
+}
+
+impl Stmt {
+    pub fn loc(&self) -> &Loc {
+        match self {
+            Stmt::Decl(decl) => decl.loc(),
+            Stmt::Exp(_, loc) => loc,
+            Stmt::Return(_, loc) => loc,
+        }
+    }
 }

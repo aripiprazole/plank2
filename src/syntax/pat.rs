@@ -1,5 +1,5 @@
 /*
- *    Copyright 2021 Gabrielle Guimarães de Oliveira
+ *    Copyright 2022 Gabrielle Guimarães de Oliveira
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,8 +14,21 @@
  *    limitations under the License.
  */
 
-pub mod syntax;
+use crate::syntax::id::Identifier;
+use crate::syntax::loc::Loc;
+use crate::syntax::path::QualifiedPath;
 
-fn main() {
-    println!("Hello, world!");
+#[derive(Debug)]
+pub enum Pat {
+    Id(Identifier, Loc),
+    EnumVariant(QualifiedPath, Vec<Pat>, Loc),
+}
+
+impl Pat {
+    pub fn loc(&self) -> &Loc {
+        match self {
+            Pat::Id(_, loc) => loc,
+            Pat::EnumVariant(_, _, loc) => loc,
+        }
+    }
 }

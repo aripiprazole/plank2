@@ -1,5 +1,5 @@
 /*
- *    Copyright 2021 Gabrielle Guimarães de Oliveira
+ *    Copyright 2022 Gabrielle Guimarães de Oliveira
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,8 +14,25 @@
  *    limitations under the License.
  */
 
-pub mod syntax;
+use crate::syntax::loc::Loc;
 
-fn main() {
-    println!("Hello, world!");
+#[derive(Debug, PartialEq)]
+pub enum Lit {
+    String(String, Loc),
+    Int(i32, Loc),
+    Float(f32, Loc),
+    True(Loc),
+    False(Loc),
+}
+
+impl Lit {
+    pub fn loc(&self) -> &Loc {
+        match self {
+            Lit::String(_, loc) => loc,
+            Lit::Int(_, loc) => loc,
+            Lit::Float(_, loc) => loc,
+            Lit::True(loc) => loc,
+            Lit::False(loc) => loc,
+        }
+    }
 }

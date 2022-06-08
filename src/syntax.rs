@@ -1,5 +1,5 @@
 /*
- *    Copyright 2021 Gabrielle Guimarães de Oliveira
+ *    Copyright 2022 Gabrielle Guimarães de Oliveira
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,8 +14,15 @@
  *    limitations under the License.
  */
 
-pub mod syntax;
-
-fn main() {
-    println!("Hello, world!");
-}
+pub mod attr;
+pub mod block;
+pub mod decl;
+pub mod exp;
+pub mod id;
+pub mod if_branch;
+pub mod lit;
+pub mod loc;
+pub mod pat;
+pub mod path;
+pub mod stmt;
+pub mod typ;

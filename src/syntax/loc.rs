@@ -1,5 +1,5 @@
 /*
- *    Copyright 2021 Gabrielle Guimarães de Oliveira
+ *    Copyright 2022 Gabrielle Guimarães de Oliveira
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
  *    limitations under the License.
  */
 
-pub mod syntax;
-
-fn main() {
-    println!("Hello, world!");
+#[derive(Debug, Eq, PartialEq)]
+pub enum Loc {
+    Generated,
+    Range(i32, i32),
 }

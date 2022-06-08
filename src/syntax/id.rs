@@ -1,5 +1,5 @@
 /*
- *    Copyright 2021 Gabrielle Guimarães de Oliveira
+ *    Copyright 2022 Gabrielle Guimarães de Oliveira
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,8 +14,32 @@
  *    limitations under the License.
  */
 
-pub mod syntax;
+use crate::syntax::loc::Loc;
+use std::hash::{Hash, Hasher};
 
-fn main() {
-    println!("Hello, world!");
+#[derive(Debug, Eq)]
+pub struct Identifier {
+    pub text: String,
+    pub loc: Loc,
+}
+
+impl Identifier {
+    pub fn from_string(text: String) -> Identifier {
+        Identifier {
+            text,
+            loc: Loc::Generated,
+        }
+    }
+}
+
+impl PartialEq for Identifier {
+    fn eq(&self, other: &Self) -> bool {
+        self.text == other.text
+    }
+}
+
+impl Hash for Identifier {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.text.hash(state)
+    }
 }
