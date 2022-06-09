@@ -14,8 +14,8 @@
  *    limitations under the License.
  */
 
-pub mod syntax;
 pub mod parsing;
+pub mod syntax;
 
 fn main() {
     println!("Hello, world!");

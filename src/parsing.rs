@@ -14,6 +14,6 @@
  *    limitations under the License.
  */
 
-pub mod parser;
 pub mod lexer;
+pub mod parser;
 pub mod tok;
