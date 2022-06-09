@@ -1,5 +1,5 @@
 /*
- *    Copyright 2021 Gabrielle Guimarães de Oliveira
+ *    Copyright 2022 Gabrielle Guimarães de Oliveira
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,9 +14,19 @@
  *    limitations under the License.
  */
 
-pub mod syntax;
-pub mod parsing;
+use crate::parsing::tok::Tok;
+use crate::syntax::file::PlankFile;
 
-fn main() {
-    println!("Hello, world!");
+pub struct PlankParser {
+    input: Vec<Tok>,
+}
+
+impl PlankParser {
+    pub fn new(input: Vec<Tok>) -> PlankParser {
+        PlankParser { input }
+    }
+
+    pub fn parse_file(&self) -> PlankFile {
+        todo!()
+    }
 }
