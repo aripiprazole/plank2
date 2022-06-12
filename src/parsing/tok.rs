@@ -68,6 +68,5 @@ pub enum Tok {
     Enum(Loc),
     Identifier(Identifier),
     String(String, Loc),
-    Int(i32, Loc),
-    Decimal(i32, i32, Loc),
+    Number(String, Loc),
 }

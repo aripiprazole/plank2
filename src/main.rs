@@ -14,9 +14,17 @@
  *    limitations under the License.
  */
 
+use chumsky::Parser;
+
 pub mod parsing;
 pub mod syntax;
 
 fn main() {
-    println!("Hello, world!");
+    let (tokens, violations) =
+        parsing::lexer::lexer().parse_recovery("fun main() { println('Hello, world!'); }");
+
+    match tokens {
+        Some(tokens) => println!("{:?}", tokens),
+        None => println!("{:?}", violations),
+    }
 }

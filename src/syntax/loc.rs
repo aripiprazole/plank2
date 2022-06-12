@@ -19,3 +19,9 @@ pub enum Loc {
     Generated,
     Range(i32, i32),
 }
+
+impl From<std::ops::Range<usize>> for Loc {
+    fn from(range: std::ops::Range<usize>) -> Self {
+        Loc::Range(range.start as i32, range.end as i32)
+    }
+}

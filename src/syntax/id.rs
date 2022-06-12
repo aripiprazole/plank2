@@ -24,6 +24,10 @@ pub struct Identifier {
 }
 
 impl Identifier {
+    pub fn new(text: String, loc: Loc) -> Self {
+        Identifier { text, loc }
+    }
+
     pub fn from_string(text: String) -> Identifier {
         Identifier {
             text,
