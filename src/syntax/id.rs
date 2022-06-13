@@ -17,7 +17,7 @@
 use crate::syntax::loc::Loc;
 use std::hash::{Hash, Hasher};
 
-#[derive(Debug, Eq)]
+#[derive(Debug, Eq, Clone)]
 pub struct Identifier {
     pub text: String,
     pub loc: Loc,

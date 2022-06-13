@@ -14,19 +14,22 @@
  *    limitations under the License.
  */
 
+use chumsky::prelude::*;
+
 use crate::parsing::tok::Tok;
+use crate::syntax::decl::Decl;
 use crate::syntax::file::PlankFile;
+use crate::syntax::loc::Loc;
+use crate::syntax::path::QualifiedPath;
 
-pub struct PlankParser {
-    input: Vec<Tok>,
-}
+// fn decl_parser() -> impl Parser<Tok, Decl, Error = Simple<Tok>> {
+//     todo!()
+// }
 
-impl PlankParser {
-    pub fn new(input: Vec<Tok>) -> PlankParser {
-        PlankParser { input }
-    }
-
-    pub fn parse_file(&self) -> PlankFile {
-        todo!()
-    }
-}
+// pub fn parser() -> impl Parser<Tok, PlankFile, Error = Simple<Tok>> {
+//     just::<_, _, Simple<Tok>>(Tok::Eof(Loc::Generated)).map(|_| PlankFile {
+//         content: vec![],
+//         path: QualifiedPath::new("main.Main".into(), Loc::Generated),
+//         text: "".into(),
+//     })
+// }

@@ -14,11 +14,13 @@
  *    limitations under the License.
  */
 
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Debug, Eq, PartialEq, Clone, Hash)]
 pub enum Loc {
     Generated,
     Range(i32, i32),
 }
+
+pub type Located<T> = (T, Loc);
 
 impl From<std::ops::Range<usize>> for Loc {
     fn from(range: std::ops::Range<usize>) -> Self {
