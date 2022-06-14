@@ -20,9 +20,9 @@ use crate::syntax::stmt::Stmt;
 
 #[derive(Debug)]
 pub struct Block {
-    value: Option<Box<Exp>>,
-    stmts: Vec<Stmt>,
-    loc: Loc,
+    pub value: Option<Box<Exp>>,
+    pub stmts: Vec<Stmt>,
+    pub loc: Loc,
 }
 
 impl Block {
